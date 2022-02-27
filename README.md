@@ -7,6 +7,6 @@ Git Flow:
  - If Dev is cool, PR Dev into main
 
 
-To Run Midi Function:
+To Run test.py:
  - pip install MidiFile
- - then run program
+ - python test.py
