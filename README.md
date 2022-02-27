@@ -7,6 +7,6 @@ Git Flow:
  - If Dev is cool, PR Dev into main
 
 
-To Run test.py:
+To Run utils.py:
  - pip install MidiFile
- - python test.py
+ - python utils.py
