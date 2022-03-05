@@ -2,3 +2,5 @@
 env
 #pycache
 *.pyc
+# intellej?
+.idea
