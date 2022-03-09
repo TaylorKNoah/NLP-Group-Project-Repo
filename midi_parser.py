@@ -12,10 +12,10 @@ def get_note_list(midifile):
 
     for elem in parsed.flat.notes:
     
+        # First get a note or group of notes and determine the highest of those
         if(hasattr(elem,"name")):
             #print(elem.name + str(elem.octave))
             note = f'{elem.name}{str(elem.octave)}'
-
         else:
 
             highest_note= 'C0'
@@ -28,6 +28,8 @@ def get_note_list(midifile):
                     highest_note = f'{elem[i].name}{str(elem[i].octave)}'
                     note = highest_note
 
+        # Check to see if chosen note is in the right hand or not.
+        # If right hand note add to list.
         if note_value(note[0]) > mid_note_value and int(note[len(note)-1]) >= mid_note_octave:
             note_list.append(note)
         elif note_value(note[0]) < mid_note_value and int(note[len(note)-1]) >= mid_note_octave:
