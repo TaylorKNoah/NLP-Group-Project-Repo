@@ -32,7 +32,7 @@ def get_note_list(midifile):
         # If right hand note add to list.
         if note_value(note[0]) > mid_note_value and int(note[len(note)-1]) >= mid_note_octave:
             note_list.append(note)
-        elif note_value(note[0]) < mid_note_value and int(note[len(note)-1]) >= mid_note_octave:
+        elif note_value(note[0]) <= mid_note_value and int(note[len(note)-1]) >= mid_note_octave:
             note_list.append(note)
 
     return note_list
