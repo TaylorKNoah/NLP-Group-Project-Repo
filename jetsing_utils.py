@@ -114,5 +114,9 @@ def jetsing_oct(note_list):
 		score += s
 
 	# score represents average octave difference between all nerighboring notes
-	score /= (len(note_list)-1)	
+	score /= (len(note_list)-1)
+
+	# ensure no divide by zero for larger metric
+	score = (1 if score == 0 else score)
+	
 	return score
