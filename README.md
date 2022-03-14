@@ -8,5 +8,5 @@ Git Flow:
 
 
 To Run utils.py:
- - pip install MidiFile
+ - pip install music21
  - python utils.py
