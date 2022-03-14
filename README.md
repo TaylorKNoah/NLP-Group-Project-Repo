@@ -9,4 +9,4 @@ Git Flow:
 
 To Run utils.py:
  - pip install music21
- - python utils.py
+ - python jetsing.py "input midi"
