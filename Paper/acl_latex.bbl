@@ -1,0 +1,28 @@
+\begin{thebibliography}{4}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Huang et~al.(2018)Huang, Vaswani, Uszkoreit, Shazeer, Simon,
+  Hawthorne, Dai, Hoffman, Dinculescu, and Eck}]{huang2018music}
+Cheng-Zhi~Anna Huang, Ashish Vaswani, Jakob Uszkoreit, Noam Shazeer, Ian Simon,
+  Curtis Hawthorne, Andrew~M. Dai, Matthew~D. Hoffman, Monica Dinculescu, and
+  Douglas Eck. 2018.
+\newblock \href {http://arxiv.org/abs/1809.04281} {Music transformer}.
+
+\bibitem[{Kotecha and Young(2018)}]{kotecha2018generating}
+Nikhil Kotecha and Paul Young. 2018.
+\newblock \href {http://arxiv.org/abs/1804.07300} {Generating music using an
+  lstm network}.
+
+\bibitem[{Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones,
+  Gomez, Kaiser, and Polosukhin}]{vaswani2017attention}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017.
+\newblock \href {http://arxiv.org/abs/1706.03762} {Attention is all you need}.
+
+\bibitem[{Zhao et~al.(2020)Zhao, Qiu, Ai, Shi, and
+  Zhu}]{zhao2020verticalhorizontal}
+Yizhou Zhao, Liang Qiu, Wensi Ai, Feng Shi, and Song-Chun Zhu. 2020.
+\newblock \href {http://arxiv.org/abs/2011.09078} {Vertical-horizontal
+  structured attention for generating music with chords}.
+
+\end{thebibliography}
