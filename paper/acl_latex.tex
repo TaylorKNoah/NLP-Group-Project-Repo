@@ -174,8 +174,8 @@ Here are examples and valid and invalid note orderings using just 5 tones:
 We define JETSING-ROW below:
 \begin{itemize}
     \item $E = \sum errors $
-    \item $M = (T / L)$
-    \item $JETSING_{ROW} = (E / M)$
+    \item $M = \frac{T}{L}$
+    \item $JETSING_{ROW} = \frac{E}{M}$
 \end{itemize}
 
 Where M represents the number of tone rows that fit within the given piece.
@@ -356,15 +356,22 @@ The authors of the VAE model utilized other metrics, so we exclude that model fo
 While this shows how well a model predicts with respect to its dataset, it doesn't quantize the actual generated outputs and as such does not provide a way to compare outputs of different models.
 According to the table above, both the Transformer and Performance RNN fit relatively well to the same dataset, with the Transformer coming out slightly ahead.
 
-However, using the JETSING metric on these pre-trained models' outputs we find varying scores that highlight different features of these models' outputs.
+However, using the $JETSING$ metric on these pre-trained models' outputs we find varying scores that highlight different features of these models' outputs.
 This lends more insight into what exactly these models are generating, such as quality of output and the consistency of that quality.
 
 \section{Conclusion}
+
+Our experiment shows that our $JETSING$ metric is able to ascertain how tastful or distasteful a piece of music is.
+By comparing the $JETSING$ scores of various models, we are able to quantitatively tell which models would sound better to human ears.
+
+Music models can be more easily assessed by using $JETSING$, a metric that is more understandable for humans, alongside a more standard ML metric.
 
 \section{Future Work}
 
 In the future, the metric could be improved by introducing hyperparameters to reduce the impact of repetition and the impact of same-octave clusters.
 This would allow the metric to produce scores more representative of the music quality.
+
+To get more robust statistics for these models gathering more generated MIDIs and examining their $JETSING$ scores could provide a more accurate insight.
 
 The MIDI parser is arguably the piece in need of most refactoring.
 Currently, the parser assumes that the input MIDI file consists of a right and left hand separation of music.
