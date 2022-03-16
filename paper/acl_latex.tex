@@ -41,7 +41,11 @@ Portland State University, 2022}
 \maketitle
 
 \begin{abstract}
-
+    The most advanced music generation models to date unsurprisingly use musical theory to work effectively.
+    However, the metrics used to score these music generation models are intended for generic machine learning purposes.
+    Often times this leads to many models sounding dramatically different, while having scores that are indistinguishable.
+    Additionally these metrics are dependent on a model's internal weights, rather than scoring the model for its music alone.
+    Shouldn't the metric scoring the models also be designed with music theory in mind?
 \end{abstract}
 
 \section{Introduction}
@@ -143,30 +147,25 @@ For each octave difference between notes $n_t$ and $n_{t+1}$ the metric reports 
 We take the sum of octaves differences and divide by number of pitches -1 in the piece.
 
 \section{Experiments}
-We re-run experiments done by Huang et.al. with their music transformer and generate pieces.
-We then apply both their metrics and our novel serial metric to rate the performances.
-As a baseline, we apply JETSING to music created by humans and qualitatively analyze its measurements.
-Then we will compare baseline results to machine-generated results and the standard deviations of each metric.
+For this experiment we are using pretrained models to generate music, then rating their performances using our metric.
+The models we used were Music Transformer by \cite{huang2018music}, Performance RNN by \cite{performance-rnn-2017}, and MusicVAE by \cite{musicVAE}.
+
+As a baseline, we have applied JETSING to music created by humans and qualitatively analyzed its measurements.
+We then compare each model's average score on our metric to their scores with the metrics used by the original authors.
+Finally we compare our baseline results to the machine-generated results.
 
 \subsection{Datasets}
-For these experiments we utilize datasets gathered from our referenced papers.
-These include Bach-Midis, Piano-e-Competition, JSB Chorale, and the MAESTRO dataset.
+Since we used pretrained models, we had no need to find data sets for this paper.
 
-\subsection{Experiment Method}
-If possible we will train one or two other models to generate music and be scored as well.
-We hope to use the LSTM from \citep{kotecha2018generating} and we are searching for a transformer that does not use attention, similar to the setup of \cite{huang2018music}.
-This way we can score models of fairly different generative strengths to see how much the scores contrast.
+\section{Results}
 
-Lastly, we will examine the results of both NLL and JETSING to see which shows more contrast.
-We find the average and standard deviation of both metrics across all scores.
-A higher standard deviation indicates that a metric shows more contrast.
-A lower standard deviation would indicate that the metric shows less contrast.
+\section{Conclusion}
 
-
+\section{Future Work}
 
 \bibliographystyle{acl_natbib}
 \bibliography{works_cited}
 
-\nocite{huang2018music, kotecha2018generating, vaswani2017attention, zhao2020verticalhorizontal}
+\nocite{huang2018music, kotecha2018generating, vaswani2017attention, zhao2020verticalhorizontal, performance-rnn-2017, musicVAE}
 
 \end{document}
