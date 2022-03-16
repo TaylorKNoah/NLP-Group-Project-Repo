@@ -2,6 +2,6 @@
 
 Jonathan Sabini, Ethan Fleming, Taylor Noah
 
-To Run utils.py:
+To Run Jetsing.py:
  - pip install music21
  - python jetsing.py "input midi"
