@@ -314,7 +314,30 @@ However, it is important to note that we were unable to gather as much data for 
 Therefore the average and standard deviation for the serialist composers may not be completely fair to judge the models against.
 It is also possible that the human composers, even when trying to make serial music, still impart their inherent knowledge of good musical concepts so that the composition is remains interesting to them.
 
-\begin{table}
+\section{Evaluation}
+
+\subsection{$JETSING$}
+Using our gathered data, the serialist composers are by far the most consistent as their standard deviation is 4.329 and we can see a score that represents a very serial piece is around a 14.
+
+The most consistent model was the Performance RNN. While it scored the lowest (in fact its average suggests it is creating serial music), it was outputting MIDI files that were similar under our metric.
+
+The VAE on the other hand was the least consistent, having the highest standard deviation.
+While it was able to achieve the highest scoring MIDI, it also produced the lowest scoring MIDI.
+
+In the middle, the Transformer model was twice as consistent as the VAE and produced as many non-serial pieces.
+However, the Transformer's lowest scoring output is about three points better than the VAE's, but the VAE's highest score is ~60 points higher than that of the Transformer. 
+
+While this should indicate that the VAE is producing highly non-serial music, it could be that our metric is skewed towards the octave-score.
+The high-scoring VAE MIDIs tended to have many repeating notes and or many notes all in the same octave.
+This phenomenon reduces the octave score to a very small number (0-1), thus dramatically increasing the $JETSING$ score.
+
+\subsection{$JETSING$ vs NLL}
+
+The purpose of JETSING is to give more noticeable measurements of a ML model's MIDI generations to in turn provide better insight into the features of said model.
+While negative log-likelihood is often the de facto standard metric for a generic model's performance,
+it is not effective for distinguishing the quality and features produced by music generation models.
+
+\begin{table}[h!]
     \centering
     \caption{The NLL scores for each ML model.}
     \begin{tabular}{c c c}
@@ -330,11 +353,23 @@ Above are the NLL scores each model scored in their original papers.
 The Performance RNN and Transformer models both use NLL to score their performance on the Piano-e-Competition dataset.
 The authors of the VAE model utilized other metrics, so we exclude that model for this comparison.
 
-\section{Evaluation}
+While this shows how well a model predicts with respect to its dataset, it doesn't quantize the actual generated outputs and as such does not provide a way to compare outputs of different models.
+According to the table above, both the Transformer and Performance RNN fit relatively well to the same dataset, with the Transformer coming out slightly ahead.
+
+However, using the JETSING metric on these pre-trained models' outputs we find varying scores that highlight different features of these models' outputs.
+This lends more insight into what exactly these models are generating, such as quality of output and the consistency of that quality.
 
 \section{Conclusion}
 
 \section{Future Work}
+
+In the future, the metric could be improved by introducing hyperparameters to reduce the impact of repetition and the impact of same-octave clusters.
+This would allow the metric to produce scores more representative of the music quality.
+
+The MIDI parser is arguably the piece in need of most refactoring.
+Currently, the parser assumes that the input MIDI file consists of a right and left hand separation of music.
+To improve on this, a system could be introduced to determine the number of tracks or “hands” a MIDI file has to separate.
+The parser also assumes that any note higher than the middle note is played by the right hand which might not always be the case.
 
 \bibliographystyle{acl_natbib}
 \bibliography{works_cited}
