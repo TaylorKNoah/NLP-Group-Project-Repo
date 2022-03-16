@@ -52,7 +52,7 @@ Portland State University, 2022}
 Music is inherently repetitive, reusing motifs to form a compelling melody that's self-coherent throughout the piece.
 Many current models for music generation often have no notion of a long-term structure in musical composition and sound,
 as though the computer musician is wandering around unsure how to compose a consistent rhythm.
-The Music Transformer model (Huang et al., 2018) uses close attention to overcome this issue,
+The Music Transformer model \citep{huang2018music} uses close attention to overcome this issue,
 maintaining long-range coherence throughout its generated musical pieces.
 
 Although the music sounds drastically better than models that don't use relative self-attention,
@@ -173,7 +173,7 @@ Here are examples of valid and invalid note orderings using just 5 tones:
     \end{itemize}
 \end{itemize}
 
-We define JETSING-ROW below:
+We define $JETSING_{ROW}$ below:
 \begin{itemize}
     \item $E = \sum errors $
     \item $M = \frac{T}{L}$
