@@ -101,10 +101,58 @@ The less serial a piece is, the better it adheres to western music theory and li
 $JETSING$ is comprised of two sub metrics $JETSING_{ROW}$ and $JETSING_{OCT}$.
 The former metric measures how well a piece adheres to the first two rules and the latter metric measures the average octave difference between each pair of melodic notes.
 
-\section{$JETSING$}
+\section{Method}
+\subsection{Parsing MIDI Files}
+
+The goal of the MIDI parser is to obtain only the melody and disregard the rest.
+The parser is set up to process any MIDI file into a format with which our metric can easily make calculations.
+The parser uses the Python library music21 to output an object containing notes from the MIDI input.
+The object is a list of notes or chords depending on whether one note or several notes are played at the same time.
+
+The parser is designed to first try and separate the melody and bass by detecting a midpoint in the music.
+The parser follows the C scale notation where the lowest note is C and the highest is B.
+
+\begin{table}
+\begin{tabular}{c c}
+    \hline
+    Note & Value \\
+    \hline
+    C & 3 \\
+    \hline
+    D & 4 \\
+    \hline
+    E & 5 \\
+    \hline
+    F & 6 \\
+    \hline
+    G & 7 \\
+    \hline
+    A & 8 \\
+    \hline
+    B & 9 \\
+    \hline
+\end{tabular}
+\caption{The parser assigns values 3 - 9 to C - B.}
+\end{table}
+
+These values are those used in calculating the mean of the notes in a MIDI file.
+As for octaves, the parser is using the octave information given by the music21 MIDI decoder. The octave range is from 1 to 10.
+The parser will total up the values for each note and octave separately and divide them with the total notes in the MIDI to get the middle note.
+
+\begin{itemize}
+    \item $ \mu_{note} = \frac{\sum note}{cardinality_{note}(MIDI)} $ 
+    \item $ \mu_{octave} = \frac{\sum octave}{cardinality_{octave}(MIDI)} $
+    \item middle note $= \mu_{note} || \mu_{octave} $
+\end{itemize}
+
+With the middle note obtained, the parser now roughly knows whether a note is part of the bass or melody.
+If a note is higher than the middle note, then it is considered part of the melody.
+Otherwise the parser considers it as part of the bass.
+
+\subsection{$JETSING$}
 Based on the rules of serialism, we first create two sub-metrics of $JETSING$: $JETSING_{ROW}$ and $JETSING_{OCT}$.
 
-\subsection{$JETSING_{ROW}$}
+\subsubsection{$JETSING_{ROW}$}
 $JETSING_{ROW}$ will be responsible for the first two rules.
 It begins at 0 and increments for each break of rules 1 and 2. 
 We divide this sum by the highest possible number of correct tone rows the piece could have had.
@@ -133,7 +181,7 @@ Where M represents the number of tone rows that fit within the given piece.
 (T representing the length of a tone row, and L representing the length of the piece).
 Calculating the $JETSING_{ROW}$ score this way gives an average over the whole piece with respect to the number of correct possible tone rows.
 
-\subsection{$JETSING_{OCT}$}
+\subsubsection{$JETSING_{OCT}$}
 This metric handles the third rule of serialism.
 Since the rule simply allows a pitch to be of any octave it doesn't have a binary rule break.
 In light of this we separated the rule into its own metric $JETSING_{OCT}$.
@@ -160,7 +208,7 @@ We take the sum of octaves differences and divide by number of pitches -1 in the
 
 Calculating the $JETSING_{OCT}$ this way yields the average octave difference from note to note over the whole piece.
 
-\subsection{$JETSING$}
+\subsubsection{$JETSING$}
 Now that we've defined the two submetrics to be used, we define the $JETSING$ metric to be:
 \\ \\
 \LARGE
