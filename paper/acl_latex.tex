@@ -114,7 +114,7 @@ These include Bach-Midis, Piano-e-Competition, JSBChorale, and the MAESTRO datas
 
 \subsection{Experiment Method}
 If possible we will train one or two other models to generate music and be scored as well.
-We hope to use the LSTM from \citep{kotecha2018generating} and we are searching for a transformer that does not use attention (similar to the setup of \cite{huang2018music}.
+We hope to use the LSTM from \citep{kotecha2018generating} and we are searching for a transformer that does not use attention, similar to the setup of \cite{huang2018music}.
 This way we can score models of fairly different generative strengths to see how much the scores contrast.
 
 Lastly, we will examine the results of both NLL and JETSING to see which shows more contrast.
@@ -135,7 +135,8 @@ Based on the rules we create two sub-metrics of JETSING: JETSING-ROW and JETSING
 
 \subsection{JETSING-ROW}
 JESTSING-ROW will be responsible for the first two rules. It begins at 0 and increments for each break of rules 1 and 2. 
-\\ \indent Here are examples and valid and invalid note orderings using just 5 tones:
+
+Here are examples and valid and invalid note orderings using just 5 tones:
 \begin{itemize}
     \item Valid Row: A-B-C-D-E 
     \item Invalid (Violates 1): A-A-B-C-D-E
@@ -149,9 +150,16 @@ JESTSING-ROW will be responsible for the first two rules. It begins at 0 and inc
 \end{itemize}
 
 \subsection{JETSING-OCTAVE}
-This metric handles the third rule of serialism. Since the rule simply allows a pitch to be of any octave it doesn't have a binary rule break. In light of this we separated the rule into its own metric JETSING-OCTAVE. 
-\\ \indent In this metric we measure the octave difference between notes $p_t$ and $p_{t+1}$, where $p$ is the pitch at time $t$. If these two notes are in the same octave the metric reports a 0. If the second note is at least one octave higher or lower the metric reports a 1 and so on. This metric reports the difference in octaves from one note to the next.
-\\ \indent We define the JETSING-OCTAVE below:
+This metric handles the third rule of serialism.
+Since the rule simply allows a pitch to be of any octave it doesn't have a binary rule break.
+In light of this we separated the rule into its own metric JETSING-OCTAVE.
+
+In this metric we measure the octave difference between notes $p_t$ and $p_{t+1}$, where $p$ is the pitch at time $t$.
+If these two notes are in the same octave the metric reports a 0.
+If the second note is at least one octave higher or lower the metric reports a 1 and so on.
+This metric reports the difference in octaves from one note to the next.
+
+We define the JETSING-OCTAVE below:
 
 \LARGE
 \begin{itemize}
@@ -160,18 +168,17 @@ This metric handles the third rule of serialism. Since the rule simply allows a 
 \end{itemize}
 \normalsize
 
-\indent $\alpha_t$ represents the octave, $\Omega$, difference of pitches $p_{t+1}$ and $p_t$. We then sum over $\alpha$ at each time step, to get the total octave differences in the piece, and then divide by one less than the number of notes in the piece, $n$, to get the average octave difference over the piece, $A$.
+$\alpha_t$ represents the octave, $\Omega$, difference of pitches $p_{t+1}$ and $p_t$.
+We then sum over $\alpha$ at each time step, to get the total octave differences in the piece,
+and then divide by one less than the number of notes in the piece, $n$, to get the average octave difference over the piece, $A$.
 
-For each octave difference between notes $n_t$ and $n_{t+1}$ the metric reports the octave difference. We take the sum of octaves differences and divide by number of pitches -1 in the piece.
-
-
-
+For each octave difference between notes $n_t$ and $n_{t+1}$ the metric reports the octave difference.
+We take the sum of octaves differences and divide by number of pitches -1 in the piece.
 
 
 \bibliographystyle{acl_natbib}
 \bibliography{works_cited}
 
 \nocite{huang2018music, kotecha2018generating, vaswani2017attention, zhao2020verticalhorizontal}
-
 
 \end{document}
