@@ -1,11 +1,6 @@
-# NLP-Group-Project-Repo
+# Measuring Music Quality Using JETSING
 
-Git Flow:
- - Branch off Dev to new branch
- - Do things on new branch
- - PR into Dev
- - If Dev is cool, PR Dev into main
-
+Jonathan Sabini, Ethan Fleming, Taylor Noah
 
 To Run utils.py:
  - pip install music21
